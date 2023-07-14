@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 // Schema.
 import { UserSchema } from './auth/schemas/user.schema';
+import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UserSchema } from './auth/schemas/user.schema';
     //   inject: 
     // }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    BookModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService],

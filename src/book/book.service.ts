@@ -15,4 +15,8 @@ export class BookService {
   async findAllBooks(): Promise<Book[]> {
     return await this.BookModel.find();
   }
+
+  async createABook(book: Book): Promise<Book> {
+    return await this.BookModel.create(book);
+  } 
 }

@@ -7,3 +7,7 @@ export class CreateABookDTO {
   readonly price: number;
   readonly category: Category;
 }
+
+export class FindABookByIdDTO {
+  readonly id: string;
+}

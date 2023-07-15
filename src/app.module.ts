@@ -20,12 +20,7 @@ import { BookModule } from './book/book.module';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DB_URI),
-    AuthModule,
-    PassportModule.register({ defaultStrategy: 'jwt' }),
-    // JwtModule.registerAsync({
-    //   inject:ConfigModule
-    // }),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    AuthModule,    
     BookModule,
   ],
   controllers: [AppController, AuthController],

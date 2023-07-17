@@ -8,7 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User } from './schemas/user.schema';
 
 // DTO.
-import { RegisterDTO } from './dto/auth.dto';
+import { LoginDTO, RegisterDTO } from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -34,5 +34,9 @@ export class AuthService {
     const token = this.jwtService.sign({ id: user._id });
 
     return { user, token };
+  }
+
+  async login(loginDTO: LoginDTO) {
+    return 0;
   }
 }

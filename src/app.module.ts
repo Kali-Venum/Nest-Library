@@ -9,9 +9,11 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
 
+// Module.
+import { BookModule } from './book/book.module';
+
 // Schema.
 import { UserSchema } from './auth/schemas/user.schema';
-import { BookModule } from './book/book.module';
 
 @Module({
   imports: [

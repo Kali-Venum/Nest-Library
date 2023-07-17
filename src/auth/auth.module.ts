@@ -7,12 +7,18 @@ import { JwtModule } from '@nestjs/jwt';
 // Schema.
 import { UserSchema } from './schemas/user.schema';
 
+// Service.
+import { AuthService } from './auth.service';
+
+// Controller.
+import { AuthController } from './auth.controller';
+
 @Module({
   imports: [
+    ConfigModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
-      inject: [ConfigModule],
-      useFactory: (config: ConfigService) => {
+      useFactory: async (config: ConfigService) => {
         return {
           secret: config.get<string>('JWT_SECRET'),
           signOptions: {
@@ -20,8 +26,11 @@ import { UserSchema } from './schemas/user.schema';
           },
         };
       },
+      inject: [ConfigService],
     }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
+  providers: [AuthService],
+  controllers: [AuthController],
 })
 export class AuthModule {}

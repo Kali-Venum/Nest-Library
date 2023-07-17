@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
+import { LocalStrategy } from './auth/local.strategy';
 
 // Module.
 import { BookModule } from './book/book.module';
@@ -26,6 +27,6 @@ import { UserSchema } from './auth/schemas/user.schema';
     BookModule,
   ],
   controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  providers: [AppService, AuthService, LocalStrategy],
 })
 export class AppModule {}

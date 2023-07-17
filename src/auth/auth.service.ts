@@ -15,8 +15,8 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(SignUpDTO) {
-    const { name, email, password } = SignUpDTO;
+  async register(RegisterDTO): Promise<{ token: string }> {
+    const { name, email, password } = RegisterDTO;
 
     const hashedPassword = bcrypt.hash(password, 10);
 
@@ -28,6 +28,6 @@ export class AuthService {
 
     const token = this.jwtService.sign({ id: user._id });
 
-    return {token}
+    return { token };
   }
 }

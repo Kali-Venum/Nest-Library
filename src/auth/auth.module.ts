@@ -30,7 +30,11 @@ import { AuthController } from './auth.controller';
     }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    // JwtStrategy
+  ],
   controllers: [AuthController],
+  exports: [PassportModule, JwtModule],
 })
 export class AuthModule {}
